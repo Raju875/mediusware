@@ -76,5 +76,18 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+
+
+        /*
+           |------------------------------------------------------------------------
+           | Custom api routes
+          |-------------------------------------------------------------------------
+         */
+
+        // Social Safety Net
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/Product/api.php'));
     }
 }

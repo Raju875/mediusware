@@ -2012,6 +2012,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2028,9 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      product_name: '',
-      product_sku: '',
-      description: '',
+      product_name: "",
+      product_sku: "",
+      description: "",
       images: [],
       product_variant: [{
         option: this.variants[0].id,
@@ -2038,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       product_variant_prices: [],
       dropzoneOptions: {
-        url: 'https://httpbin.org/post',
+        url: "https://httpbin.org/post",
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
@@ -2086,7 +2152,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // combination algorithm
     getCombn: function getCombn(arr, pre) {
-      pre = pre || '';
+      pre = pre || "";
 
       if (!arr.length) {
         return pre;
@@ -2094,7 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var self = this;
       var ans = arr[0].reduce(function (ans, value) {
-        return ans.concat(self.getCombn(arr.slice(1), pre + value + '/'));
+        return ans.concat(self.getCombn(arr.slice(1), pre + value + "/"));
       }, []);
       return ans;
     },
@@ -2108,7 +2174,7 @@ __webpack_require__.r(__webpack_exports__);
         product_variant: this.product_variant,
         product_variant_prices: this.product_variant_prices
       };
-      axios.post('/product', product).then(function (response) {
+      axios.post("/api/v1/product", product).then(function (response) {
         console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -2117,7 +2183,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -50625,9 +50691,9 @@ var render = function() {
                           { domProps: { value: variant.id } },
                           [
                             _vm._v(
-                              "\n                                        " +
+                              "\n                    " +
                                 _vm._s(variant.title) +
-                                "\n                                    "
+                                "\n                  "
                             )
                           ]
                         )
@@ -50688,7 +50754,7 @@ var render = function() {
                     staticClass: "btn btn-primary",
                     on: { click: _vm.newVariant }
                   },
-                  [_vm._v("Add another option")]
+                  [_vm._v("\n            Add another option\n          ")]
                 )
               ])
             : _vm._e(),
@@ -50781,7 +50847,7 @@ var render = function() {
         attrs: { type: "submit" },
         on: { click: _vm.saveProduct }
       },
-      [_vm._v("Save")]
+      [_vm._v("\n    Save\n  ")]
     ),
     _vm._v(" "),
     _c(
@@ -50800,7 +50866,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          "\n            card-header\n            py-3\n            d-flex\n            flex-row\n            align-items-center\n            justify-content-between\n          "
       },
       [
         _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
@@ -50817,7 +50883,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          "\n            card-header\n            py-3\n            d-flex\n            flex-row\n            align-items-center\n            justify-content-between\n          "
       },
       [
         _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
