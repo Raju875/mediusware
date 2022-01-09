@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductStore;
+use App\Http\Requests\StoreProduct;
+use App\Libraries\CommonFunction;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantPrice;
 use App\Models\Variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -39,7 +43,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // input validation start
+        $rules = [
+            'title' => 'required',
+            'sku' => 'required|unique:products,sku'
+        ];
 
+        // custom validation message...
+        $message = [
+            'title.required' => 'The title field is required.',
+            'sku.required' => 'The sku field is required.',
+            'sku.unique' => $request->sku . ' has already been taken. Try unique name.'
+        ];
+
+        $this->validate($request, $rules, $message);
+        // input validation end
+
+        try {
+            // product store event
+            event(new ProductStore($request));
+
+            return CommonFunction::response(true, 200, '', 'Product store successfully');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return CommonFunction::response(false, 500, '', $e->getMessage());
+        }
     }
 
 
@@ -51,7 +80,6 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-
     }
 
     /**
